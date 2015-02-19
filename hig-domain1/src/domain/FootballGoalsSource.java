@@ -37,7 +37,6 @@ public class FootballGoalsSource implements DataSource {
 			goals += Integer.parseInt(event.get("homeTeamScore").toString());
 			addGoalsToDate(result, date, goals);
 		}
-		majs
 		return result;
 	}
 	public static void main(String[] args) {
