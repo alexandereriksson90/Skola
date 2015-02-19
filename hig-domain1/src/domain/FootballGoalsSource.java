@@ -30,7 +30,6 @@ public class FootballGoalsSource implements DataSource {
 		@SuppressWarnings("unused")
 		List<Map> events = (List)data.get("events");
 		Map<LocalDate, Double> result = new TreeMap<>();
-		
 		for(Map event : (List<Map>) data.get("events")) {
 			LocalDate date = LocalDate.parse(event.get("startDate").toString().substring(0,10));
 			int goals = Integer.parseInt(event.get("visitingTeamScore").toString());
