@@ -21,11 +21,13 @@ public class FootballGoalsSource implements DataSource {
 		return "Antal mål";
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Map<LocalDate, Double> getData() {
 		UrlFetcher urlFetcher = new UrlFetcher("http://api.everysport.com/v1/events?apikey=1769e0fdbeabd60f479b1dcaff03bf5c&league=63925&limit=20");
 		JsonToMapParser parser = new JsonToMapParser(urlFetcher.getContent());
 		Map<String,Object> data = parser.getResult();
+		@SuppressWarnings("unused")
 		List<Map> events = (List)data.get("events");
 		
 		Map<LocalDate, Double> result = new TreeMap<>();
@@ -35,7 +37,7 @@ public class FootballGoalsSource implements DataSource {
 			goals += Integer.parseInt(event.get("homeTeamScore").toString());
 			addGoalsToDate(result, date, goals);
 		}
-		
+		majs
 		return result;
 	}
 	public static void main(String[] args) {
