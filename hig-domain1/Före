@@ -1,0 +1,11 @@
+git add .
+git commit .
+git commit -a.
+
+
+git init //skapa lokalt repositorium
+
+git init --BARE //skapas inget lokalt filsystem
+git push //uppdatera förändringar
+git pull
+git clone
