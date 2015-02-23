@@ -1,10 +1,9 @@
 package domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * @author Alexander Eriksson nbt12aen
  */
@@ -13,7 +12,6 @@ public class DataMatcher {
 	private final DataSource source1;
 	private final DataSource source2;
 	private Map<String, DataPair> finalResult;
-	private ArrayList<LocalDate> keylist = new ArrayList<>();
 
 	public DataMatcher(DataSource source1, DataSource source2,
 			Resolution resolution) {
@@ -23,9 +21,10 @@ public class DataMatcher {
 	}
 
 	private boolean matches(LocalDate key1, LocalDate key2) {
-		return resolution.getDateString(key1).equals(resolution.getDateString(key2));
+		return resolution.getDateString(key1).equals(
+				resolution.getDateString(key2));
 	}
-	
+
 	private String getTitle() {
 		return source1.getName() + " vs " + source2.getName();
 	}
@@ -37,11 +36,11 @@ public class DataMatcher {
 		for (LocalDate key1 : src1.keySet()) {
 			for (LocalDate key2 : src2.keySet()) {
 				if (matches(key1, key2)) {
-					if(keylist.contains(key1)) {
+					if (!finalResult
+							.containsKey(resolution.getDateString(key1))) {
 						finalResult.put(resolution.getDateString(key1),
-							new DataPair(findDoubles(source1, key1),
-									findDoubles(source2, key2)));
-						keylist.add(key1);
+								new DataPair(findDoubles(source1, key1),
+										findDoubles(source2, key2)));
 					}
 				}
 			}
@@ -58,7 +57,7 @@ public class DataMatcher {
 			if (matches(key1, date)) {
 				value += src.getData().get(key1).doubleValue();
 				count++;
-				System.out.println(count);
+
 			}
 		}
 		value = value / count;

@@ -9,6 +9,7 @@ public class JsonToMapParser {
 	public JsonToMapParser(String json) {
 		this.json = json;
 	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> getResult() {	
 		return new Genson().deserialize(json, Map.class);	
 	}

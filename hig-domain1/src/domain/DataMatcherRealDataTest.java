@@ -1,11 +1,9 @@
-
 package domain;
+
 /**
  * @author Alexander Eriksson nbt12aen
  */
 import static org.junit.Assert.*;
-import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +16,8 @@ public class DataMatcherRealDataTest {
 	@Before
 	public void setUp() throws Exception {
 		source1 = new FootballGoalsSource();
-		source2 = new SineWave();		
+		source2 = new SineWave();
+		
 	}
 
 	@After
@@ -27,22 +26,48 @@ public class DataMatcherRealDataTest {
 
 	@Test
 	public void testResultingData() {
-//		dm = new DataMatcher(source1, source2, Resolution.DAY);
-//		ResultingData rsd = dm.searchDataForMatch();
-//		assertEquals(rsd.getTitle(), "Antal mål per matchdag i fotbollsallsvenskan vs sinewave");
-//		assertEquals(rsd.getXUnit(), "Antal mål");
-//		assertEquals(rsd.getYUnit(), "undefined");
+		dm = new DataMatcher(source1, source2, Resolution.DAY);
+		ResultingData rsd = dm.searchDataForMatch();
+		assertEquals(rsd.getTitle(),
+				"Antal mål per matchdag i fotbollsallsvenskan vs Sinewave");
+		assertEquals(rsd.getXUnit(), "Antal mål");
+		assertEquals(rsd.getYUnit(), "undefinedForSinewave");
 	}
 
 	@Test
-	public void testDay() {
+	public void testMonthWithRealData() {
+		dm = new DataMatcher(source1, source2, Resolution.MONTH);
+		Map<String, DataPair> result = dm.searchDataForMatch().getData();
+		assertNotNull(result);
+		assertEquals(new Double(11.0), result.get("2014-03").getX());
+		assertEquals(new Double(3.5), result.get("2014-04").getX());
+		assertEquals(new Double(0.966428374821654), result.get("2014-03")
+				.getY());
+		assertEquals(new Double(0.7976843827047911), result.get("2014-04")
+				.getY());
+	}
+
+	@Test
+	public void testYearWithRealData() {
 		dm = new DataMatcher(source1, source2, Resolution.YEAR);
 		Map<String, DataPair> result = dm.searchDataForMatch().getData();
 		assertNotNull(result);
-		System.out.println(result.size());
 		assertEquals(new Double(5.0), result.get("2014").getX());
-		assertEquals(new Double(13.0), result.get("2014").getY());
+		assertEquals(new Double(-0.008002062669153681), result.get("2014")
+				.getY());
 	}
 
+	@Test
+	public void testQuarterWithRealData() {
+		dm = new DataMatcher(source1, source2, Resolution.QUARTER);
+		Map<String, DataPair> result = dm.searchDataForMatch().getData();
+		assertNotNull(result);
+		assertEquals(new Double(11.0), result.get("2014-Q1").getX());
+		assertEquals(new Double(3.5), result.get("2014-Q2").getX());
+		assertEquals(new Double(0.9501485330278084), result.get("2014-Q1")
+				.getY());
+		assertEquals(new Double(0.4930992349106489), result.get("2014-Q2")
+				.getY());
+	}
 
 }
