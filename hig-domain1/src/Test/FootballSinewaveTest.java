@@ -11,7 +11,7 @@ import InputData.SineWave;
 /**
  * @author Alexander Eriksson nbt12aen
  */
-public class FinalTest {
+public class FootballSinewaveTest {
 	
 	
 	public static void main(String[] args) {
