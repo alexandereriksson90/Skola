@@ -1,10 +1,15 @@
-package InputData;
+package Test;
 
 import static org.junit.Assert.*;
+
 import java.util.Map;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import InputData.JsonToMapParser;
+import InputData.UrlFetcher;
 /**
  * @author Alexander Eriksson nbt12aen
  */
@@ -41,8 +46,9 @@ public class JsonToMapParserTest {
 	public void testurlFetcherResult() {
 		Map<String, Object> resultingMap = new JsonToMapParser(urlFetcher)
 				.getResult();
-		System.out.println(resultingMap.keySet());
-		System.out.println(resultingMap.get("events"));
+		System.out.println("Hela listan: "+resultingMap+"\n");
+		System.out.println("Hashnycklarna: " + resultingMap.keySet()+"\n");
+		System.out.println("Listan ur events"+resultingMap.get("events")+"\n");
 		assertEquals(resultingMap.size(), 3);
 
 	}

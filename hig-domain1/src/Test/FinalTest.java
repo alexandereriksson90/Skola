@@ -1,7 +1,16 @@
-package domain;
+package Test;
 
 import java.util.Map;
 
+import domain.DataMatcher;
+import domain.DataPair;
+import domain.DataSource;
+import domain.Resolution;
+import InputData.FootballGoalsSource;
+import InputData.SineWave;
+/**
+ * @author Alexander Eriksson nbt12aen
+ */
 public class FinalTest {
 	
 	

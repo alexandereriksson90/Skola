@@ -1,8 +1,10 @@
-package domain;
+package InputData;
 
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.TreeMap;
+
+import domain.DataSource;
 
 /**
  * @author Alexander Eriksson nbt12aen

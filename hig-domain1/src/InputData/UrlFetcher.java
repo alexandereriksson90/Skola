@@ -32,10 +32,4 @@ public class UrlFetcher {
 		return result;
 	}
 
-	public static void main(String[] args) {
-		System.out
-				.println(new UrlFetcher(
-						"http://api.everysport.com/v1/events?apikey=1769e0fdbeabd60f479b1dcaff03bf5c&league=63925&limit=2")
-						.getContent());
-	}
 }

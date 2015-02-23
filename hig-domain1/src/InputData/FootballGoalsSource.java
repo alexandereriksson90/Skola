@@ -1,10 +1,11 @@
-package domain;
+package InputData;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import domain.DataSource;
 import InputData.JsonToMapParser;
 import InputData.UrlFetcher;
 

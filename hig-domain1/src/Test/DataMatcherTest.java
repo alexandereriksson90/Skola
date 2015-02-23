@@ -1,15 +1,23 @@
 
-package domain;
+package Test;
 /**
  * @author Alexander Eriksson nbt12aen
  */
 import static org.junit.Assert.*;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import domain.DataMatcher;
+import domain.DataPair;
+import domain.DataSource;
+import domain.Resolution;
+import domain.ResultingData;
 
 public class DataMatcherTest {
 	private DataSource source1, source2;
