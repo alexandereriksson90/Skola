@@ -39,8 +39,8 @@ public class DataMatcherRealDataTest {
 		dm = new DataMatcher(source1, source2, Resolution.DAY);
 		ResultingData rsd = dm.searchDataForMatch();
 		assertEquals(rsd.getTitle(),
-				"Antal mål per matchdag i fotbollsallsvenskan vs Sinewave");
-		assertEquals(rsd.getXUnit(), "Antal mål");
+				"Antal mï¿½l per matchdag i fotbollsallsvenskan vs Sinewave");
+		assertEquals(rsd.getXUnit(), "Antal mï¿½l");
 		assertEquals(rsd.getYUnit(), "undefinedForSinewave");
 	}
 
@@ -49,11 +49,13 @@ public class DataMatcherRealDataTest {
 		dm = new DataMatcher(source1, source2, Resolution.MONTH);
 		Map<String, DataPair> result = dm.searchDataForMatch().getData();
 		assertNotNull(result);
+		
+		System.out.println(source2.getData());
 		assertEquals(new Double(11.0), result.get("2014-03").getX());
 		assertEquals(new Double(3.5), result.get("2014-04").getX());
-		assertEquals(new Double(0.966428374821654), result.get("2014-03")
+		assertEquals(new Double(0.9092974268256817), result.get("2014-03")
 				.getY());
-		assertEquals(new Double(0.7976843827047911), result.get("2014-04")
+		assertEquals(new Double(0.9092974268256817), result.get("2014-04")
 				.getY());
 	}
 
@@ -63,7 +65,7 @@ public class DataMatcherRealDataTest {
 		Map<String, DataPair> result = dm.searchDataForMatch().getData();
 		assertNotNull(result);
 		assertEquals(new Double(5.0), result.get("2014").getX());
-		assertEquals(new Double(-0.008002062669153681), result.get("2014")
+		assertEquals(new Double(0.9092974268256816), result.get("2014")
 				.getY());
 	}
 
@@ -74,9 +76,9 @@ public class DataMatcherRealDataTest {
 		assertNotNull(result);
 		assertEquals(new Double(11.0), result.get("2014-Q1").getX());
 		assertEquals(new Double(3.5), result.get("2014-Q2").getX());
-		assertEquals(new Double(0.9501485330278084), result.get("2014-Q1")
+		assertEquals(new Double(0.9092974268256816), result.get("2014-Q1")
 				.getY());
-		assertEquals(new Double(0.4930992349106489), result.get("2014-Q2")
+		assertEquals(new Double(0.9092974268256816), result.get("2014-Q2")
 				.getY());
 	}
 

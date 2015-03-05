@@ -1,11 +1,8 @@
 
 package Test;
-/**
- * @author Alexander Eriksson nbt12aen
- */
+
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +15,9 @@ import domain.DataPair;
 import domain.DataSource;
 import domain.Resolution;
 import domain.ResultingData;
-
+/**
+ * @author Alexander Eriksson nbt12aen
+ */
 public class DataMatcherTest {
 	private DataSource source1, source2;
 	private DataMatcher dm;
@@ -38,11 +37,11 @@ public class DataMatcherTest {
 			}
 
 			@Override
-			public Map<LocalDate, Double> getData() {
-				Map<LocalDate, Double> result = new HashMap<>();
-				result.put(LocalDate.parse("2015-11-23"), 7.0);
-				result.put(LocalDate.parse("1994-02-05"), 8.0);
-				result.put(LocalDate.parse("1994-01-23"), 10.0);
+			public Map<String, Double> getData() {
+				Map<String, Double> result = new HashMap<>();
+				result.put("2015-11-23", 7.0);
+				result.put("1994-02-05", 8.0);
+				result.put("1994-01-23", 10.0);
 				return result;
 			}
 		};
@@ -59,12 +58,12 @@ public class DataMatcherTest {
 			}
 
 			@Override
-			public Map<LocalDate, Double> getData() {
-				Map<LocalDate, Double> result = new HashMap<>();
-				result.put(LocalDate.parse("2015-11-23"), 13.0);
-				result.put(LocalDate.parse("1994-01-07"), 5.0);
-				result.put(LocalDate.parse("1994-01-05"), 11.0);
-				result.put(LocalDate.parse("1995-04-12"), 11.0);
+			public Map<String, Double> getData() {
+				Map<String, Double> result = new HashMap<>();
+				result.put("2015-11-23", 13.0);
+				result.put("1994-01-07", 5.0);
+				result.put("1994-01-05", 11.0);
+				result.put("1995-04-12", 11.0);
 				return result;
 			}
 		};

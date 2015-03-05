@@ -1,6 +1,5 @@
 package domain;
 
-import java.time.LocalDate;
 import java.util.Map;
 
 /**
@@ -12,7 +11,7 @@ public interface DataSource {
 	
 	String getUnit();
 	
-	Map<LocalDate, Double> getData();
+	Map<String, Double> getData();
 
 }
 

@@ -1,6 +1,5 @@
 package InputData;
 
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -22,12 +21,18 @@ public class SineWave implements DataSource {
 	}
 
 	@Override
-	public Map<LocalDate, Double> getData() {
-		Map<LocalDate, Double> result = new TreeMap<>();
+	public Map<String, Double> getData() {
+		Map<String, Double> result = new TreeMap<>();
 		for (int year = 2012; year < 2015; year++) {
 			for (int month = 1; month < 13; month++) {
-				LocalDate key = LocalDate.of(year, month, 1);
-				result.put(key, Math.sin((key.toEpochDay() - 10957.) / 80.));
+//				LocalDate key = LocalDate.of(year, month, 1);
+				String s;
+				if(month < 10) {
+					s = new String(year+"-0"+month+"-01");
+				} else {
+					s = new String(year+"-"+month+"-01");
+				}
+				result.put(s, Math.sin(2));
 			}
 		}
 		return result;

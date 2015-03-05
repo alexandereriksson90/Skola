@@ -24,25 +24,25 @@ public class FootballSinewaveTest {
 		DataMatcher quarterDm = new DataMatcher(source1, source2, Resolution.QUARTER);
 		Map<String, DataPair> quarterResult = quarterDm.searchDataForMatch().getData();
 		
-		System.out.println("Källa nr1: Fotbollsmål");
+		System.out.println("KÃ¤lla nr1: FotbollsmÃ¥l");
 		System.out.println(source1.getData());
-		System.out.println("Källa nr2: Sinewave");
+		System.out.println("KÃ¤lla nr2: Sinewave");
 		System.out.println(source2.getData().toString() + "\n");
 		System.out.println("Resolution YEAR: ");
-		System.out.println("Antal mål år 2014: " + yearResult.get("2014").getX());
-		System.out.println("Sinusvärdet 2014: " + yearResult.get("2014").getY() + "\n");
+		System.out.println("Antal mÃ¥l Ã¥r 2014: " + yearResult.get("2014").getX());
+		System.out.println("SinusvÃ¤rdet 2014: " + yearResult.get("2014").getY() + "\n");
 		
 		System.out.println("Resolution MONTH: ");
-		System.out.println("Antal mål 2014-03: " + monthResult.get("2014-03").getX());
-		System.out.println("Sinusvärdet 2014-03: " + monthResult.get("2014-03").getY());
-		System.out.println("Antal mål 2014-04: " + monthResult.get("2014-04").getX());
-		System.out.println("Sinusvärdet 2014-04: " + monthResult.get("2014-04").getY() + "\n");
+		System.out.println("Antal mÃ¥l 2014-03: " + monthResult.get("2014-03").getX());
+		System.out.println("SinusvÃ¤rdet 2014-03: " + monthResult.get("2014-03").getY());
+		System.out.println("Antal mÃ¥l 2014-04: " + monthResult.get("2014-04").getX());
+		System.out.println("SinusvÃ¤rdet 2014-04: " + monthResult.get("2014-04").getY() + "\n");
 		
 		System.out.println("Resolution QUARTER: ");
-		System.out.println("Antal mål 2014-Q1: " + quarterResult.get("2014-Q1").getX());
-		System.out.println("Sinusvärdet 2014-Q1: " + quarterResult.get("2014-Q1").getY());
-		System.out.println("Antal mål 2014-Q2: " + quarterResult.get("2014-Q2").getX());
-		System.out.println("Sinusvärdet 2014-Q2: " + quarterResult.get("2014-Q2").getY());
+		System.out.println("Antal mÃ¥l 2014-Q1: " + quarterResult.get("2014-Q1").getX());
+		System.out.println("SinusvÃ¤rdet 2014-Q1: " + quarterResult.get("2014-Q1").getY());
+		System.out.println("Antal mÃ¥l 2014-Q2: " + quarterResult.get("2014-Q2").getX());
+		System.out.println("SinusvÃ¤rdet 2014-Q2: " + quarterResult.get("2014-Q2").getY());
 		
 	}
 

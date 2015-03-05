@@ -1,6 +1,5 @@
 package domain;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ public class DataMatcher {
 		this.resolution = resolution;
 	}
 
-	private boolean matches(LocalDate key1, LocalDate key2) {
+	private boolean matches(String key1, String key2) {
 		return resolution.getDateString(key1).equals(
 				resolution.getDateString(key2));
 	}
@@ -31,10 +30,10 @@ public class DataMatcher {
 
 	public ResultingData searchDataForMatch() {
 		finalResult = new HashMap<>();
-		Map<LocalDate, Double> src1 = source1.getData();
-		Map<LocalDate, Double> src2 = source2.getData();
-		for (LocalDate key1 : src1.keySet()) {
-			for (LocalDate key2 : src2.keySet()) {
+		Map<String, Double> src1 = source1.getData();
+		Map<String, Double> src2 = source2.getData();
+		for (String key1 : src1.keySet()) {
+			for (String key2 : src2.keySet()) {
 				if (matches(key1, key2)) {
 					if (!finalResult
 							.containsKey(resolution.getDateString(key1))) {
@@ -50,10 +49,10 @@ public class DataMatcher {
 		return resultData;
 	}
 
-	public Double findDoubles(DataSource src, LocalDate date) {
+	public Double findDoubles(DataSource src, String date) {
 		Double value = 0.0;
 		int count = 0;
-		for (LocalDate key1 : src.getData().keySet()) {
+		for (String key1 : src.getData().keySet()) {
 			if (matches(key1, date)) {
 				value += src.getData().get(key1).doubleValue();
 				count++;
