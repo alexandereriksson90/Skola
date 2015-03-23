@@ -5,25 +5,21 @@ import java.util.TreeMap;
 
 import domain.DataSource;
 
-/**
- * @author Alexander Eriksson nbt12aen
- */
-public class SineWave implements DataSource {
-
+public class RainVolume implements DataSource {
 	@Override
 	public String getName() {
-		return "Sinewave";
+		return "RainVolume";
 	}
 
 	@Override
 	public String getUnit() {
-		return "undefinedForSinewave";
+		return "Mm";
 	}
 
 	@Override
 	public Map<String, Double> getData() {
 		Map<String, Double> result = new TreeMap<>();
-		for (int year = 2012; year < 2015; year++) {
+		for (int year = 2014; year < 2015; year++) {
 			for (int month = 1; month < 13; month++) {
 				String s;
 				if(month < 10) {
@@ -31,7 +27,8 @@ public class SineWave implements DataSource {
 				} else {
 					s = new String(year+"-"+month+"-01");
 				}
-				result.put(s, Math.sin(2));
+				result.put(s, 7.0);
+				
 			}
 		}
 		return result;

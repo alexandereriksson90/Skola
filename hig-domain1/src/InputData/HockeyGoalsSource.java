@@ -11,16 +11,14 @@ import InputData.UrlFetcher;
 /**
  * @author Alexander Eriksson nbt12aen
  */
-public class FootballGoalsSource implements DataSource {
+public class HockeyGoalsSource implements DataSource {
 	@Override
 	public String getName() {
-
-		return "Antal mål per matchdag i fotbollsallsvenskan";
+		return "New York Rangers gjorda mål per hemmamatch i NHL";
 	}
 
 	@Override
 	public String getUnit() {
-
 		return "Antal mål";
 	}
 
@@ -28,20 +26,19 @@ public class FootballGoalsSource implements DataSource {
 	@Override
 	public Map<String, Double> getData() {
 		UrlFetcher urlFetcher = new UrlFetcher(
-				"http://api.everysport.com/v1/events?apikey=1769e0fdbeabd60f479b1dcaff03bf5c&league=63925&limit=20");
+				"http://api.everysport.com/v1/events?apikey=1769e0fdbeabd60f479b1dcaff03bf5c&league=68416&limit=547");
 		JsonToMapParser parser = new JsonToMapParser(urlFetcher.getContent());
 		Map<String, Object> data = parser.getResult();
-		@SuppressWarnings("unused")
-		List<Map> events = (List) data.get("events");
 		Map<String, Double> result = new TreeMap<>();
 		for (Map event : (List<Map>) data.get("events")) {
-			String date = event.get("startDate").toString()
-					.substring(0, 10);
-			int goals = Integer.parseInt(event.get("visitingTeamScore")
-					.toString());
-			goals += Integer.parseInt(event.get("homeTeamScore").toString());
-			addGoalsToDate(result, date, goals);
-		}	
+			String date = event.get("startDate").toString().substring(0, 10);
+			int goals = Integer.parseInt(event.get("homeTeamScore").toString());
+			Map<String, Object> homeTeamMap = (Map<String, Object>) event
+					.get("homeTeam");
+			if (homeTeamMap.get("name").toString().equals("New York Rangers")) {
+				addGoalsToDate(result, date, goals);
+			}
+		}
 		return result;
 	}
 
