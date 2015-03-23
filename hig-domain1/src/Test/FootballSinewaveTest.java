@@ -23,6 +23,7 @@ public class FootballSinewaveTest {
 		Map<String, DataPair> monthResult = monthDm.searchDataForMatch().getData();
 		DataMatcher quarterDm = new DataMatcher(source1, source2, Resolution.QUARTER);
 		Map<String, DataPair> quarterResult = quarterDm.searchDataForMatch().getData();
+
 		
 		System.out.println("Källa nr1: Fotbollsmål");
 		System.out.println(source1.getData());
